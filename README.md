@@ -1,6 +1,6 @@
 <h1 align="center"> DojoDeals </h1>
 
-<h5 align="center">  By:  <a href="https://github.com/zava”dev>Nathan Zavala</a> - <i>Live site</i></h5>
+<h5 align="center">  By:  <a href="https://github.com/zavadev">Nathan Zavala</a> - <i>Live site</i></h5>
 
 Welcome to DojoDeals, your one-stop shop for all you martial arts equipment needs. Take a look at our products and create an account to add them to your cart, so we can get you geared up and back to training! HIIII-YAAA!
 
