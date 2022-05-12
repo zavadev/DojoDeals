@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductsThunk } from '../store/products';
+import { getProductsThunk } from '../../store/products';
+import './MainPage.css';
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function MainPage() {
       <dl>
         {products?.map(product => (
           <dt key={product?.id}>
-            <img src={product?.image} />
+            <img src={product?.image} alt={product?.title}/>
           </dt>
         ))}
       </dl>

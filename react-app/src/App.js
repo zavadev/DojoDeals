@@ -8,7 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import MainPage from './components/MainPage';
+import MainPage from './components/MainPage/MainPage';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +47,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/main' exact={true} >
           <MainPage />
+        </Route>
+        <Route path='/products/:productId' exact={true} >
+          <ProductDetails />
         </Route>
       </Switch>
     </BrowserRouter>
