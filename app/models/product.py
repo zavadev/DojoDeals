@@ -21,5 +21,5 @@ class Product(db.Model):
       'price': self.price,
       'image': self.image,
       'category': self.category,
-      'reviews': [review.to_dict() for review in self.reviews]
+      # 'reviews': [review.to_dict() for review in self.reviews]
     }
