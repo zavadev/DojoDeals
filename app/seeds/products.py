@@ -2,17 +2,17 @@ from app.models import db, Product
 
 def seed_products():
   product1 = Product(
-    title="Test",
+    title="MMA Gloves (leather)",
     description="An amazing pair of gloves.",
     price=19.99,
-    image="/test",
+    image="https://res.cloudinary.com/doulyb7dt/image/upload/v1652340344/DojoDeals/gloves_vbtz6c.png",
     category="gloves"
     )
   product2 = Product(
-    title="Gi",
+    title="Gi (Blue)",
     description="A training gi of the highest quality.",
     price=99.99,
-    image="/test",
+    image="https://res.cloudinary.com/doulyb7dt/image/upload/v1652340348/DojoDeals/gi_nkunia.png",
     category="clothing"
     )
 

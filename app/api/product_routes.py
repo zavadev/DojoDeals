@@ -61,8 +61,8 @@ def update_review(id, userId):
 #DELETE a Review
 @product_routes.route('/<int:id>/reviews/<int:userId>', methods=['DELETE'])
 @login_required
-def delete_review(id, userId):
-  deletedReview = Review.query.get(id)
+def delete_review(productId, userId):
+  deletedReview = Review.query.filter(Review.product_id == productId, Review.user_id == userId).first()
   db.session.delete(deletedReview)
   db.session.commit()
   return deletedReview.to_dict()
