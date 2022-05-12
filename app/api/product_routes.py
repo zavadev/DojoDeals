@@ -44,7 +44,7 @@ def add_review(id):
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #UPDATE a Review
-@product_routes.route('/<int:id>/reviews/<int:userId>/edit', methods=['PATCH'])
+@product_routes.route('/<int:id>/reviews/<int:userId>/edit', methods=['PUT'])
 @login_required
 def update_review(id, userId):
   updatedReview = Review.query.filter(Review.user_id == userId, Review.product_id == id).first()
