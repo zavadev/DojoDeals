@@ -20,6 +20,15 @@ def single_product(id):
   reviews = Review.query.filter(Review.product_id == id).all()
   product = {'product': product.to_dict(), 'reviews': [review.to_dict() for review in reviews]}
   return product
+  # return product.to_dict()
+
+#GET Reviews
+# @product_routes.route('/<int:id>/reviews')
+# def get_reviews(id):
+#   reviews = Review.query.filter(Review.product_id == id).all()
+#   reviewsDict = {'reviews': reviews}
+#   return reviewsDict
+
 
 #POST New Review
 @product_routes.route('/<int:id>/reviews', methods=['POST'])

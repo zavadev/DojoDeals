@@ -7,12 +7,12 @@ import './ProductDetails.css';
 function ProductDetails() {
   const dispatch = useDispatch();
   const { productId } = useParams();
-  const product = useSelector(state => Object.values(state.products)[0]);
-  const reviews = useSelector(state => state.reviews);
+  const fetchedProd = useSelector(state => Object.values(state.products)[0]);
+  const product = fetchedProd?.product
+  const reviews = fetchedProd?.reviews
 
   console.log("=====>>>>>>PRODUCT<<<<<<======", product);
   console.log("00000>>>>>>REVIEWS<<<<<<00000", reviews);
-
 
   useEffect(() => {
     dispatch(getOneProductThunk(productId))
@@ -22,9 +22,25 @@ function ProductDetails() {
     <>
       <h1>PRODUCT DETAILS PAGE</h1>
       <div>
-        <h3>{product?.title}</h3>
+        <h3>{product?.title} - ${product?.price}</h3>
         <img src={product?.image} alt={product?.title} className="details-main-photo"/>
         <p>{product?.description}</p>
+      </div>
+      <div className="details-reviews-container">
+        <div className="reviews-header">
+          REVIEWS FOR THIS PRODUCT:
+        </div>
+        <div>
+          <dl>
+            {reviews?.map(review => (
+              <dt key={review?.id} className="review-list-item-container">
+                <div>{review?.title}</div>
+                <div>{review?.content}</div>
+                <div>{review?.rating}/5 Stars</div>
+              </dt>
+            ))}
+          </dl>
+        </div>
       </div>
     </>
   )

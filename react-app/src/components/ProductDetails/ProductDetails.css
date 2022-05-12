@@ -2,3 +2,8 @@
   width: 400px;
   height: 400px;
 }
+
+.review-list-item-container{
+  margin: 15px;
+  border: 2px solid blue;
+}

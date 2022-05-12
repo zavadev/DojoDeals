@@ -24,7 +24,7 @@ const deleteReview = (review) => ({
 })
 
 export const getReviewsThunk = (productId) => async (dispatch) => {
-  const response = await fetch(`/api/products/${productId}`);
+  const response = await fetch(`/api/products/${productId}/reviews`);
   if (response.ok){
     const product = await response.json();
     dispatch(getReviews(product.reviews));

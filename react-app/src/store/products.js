@@ -24,7 +24,8 @@ export const getOneProductThunk = (productId) => async (dispatch) => {
   const response = await fetch(`/api/products/${productId}`)
   if (response.ok) {
     const product = await response.json();
-    dispatch(getOneProduct(product.product))
+    console.log("response product======", product)
+    dispatch(getOneProduct(product))
     return product;
   }
   return response;
