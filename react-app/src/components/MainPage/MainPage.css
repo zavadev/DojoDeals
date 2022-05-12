@@ -1,0 +1,21 @@
+.image-list-main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.main-product-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  margin: 15px;
+}
+
+.main-image-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

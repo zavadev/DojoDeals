@@ -17,13 +17,16 @@ function MainPage() {
   return (
     <>
       <h1>MAIN PRODUCTS PAGE</h1>
-      <dl>
+      <dl className="image-list-main">
         {products?.map(product => (
-          <NavLink key={product?.id} to={`/products/${product.id}`}>
-            <dt>
-              <img src={product?.image} alt={product?.title}/>
-            </dt>
-          </NavLink>
+          <div className="main-image-div">
+            <NavLink key={product?.id} to={`/products/${product.id}`}>
+              <dt>
+                <img src={product?.image} alt={product?.title} className="main-product-image"/>
+              </dt>
+            </NavLink>
+            <h3>{product?.title} - ${product?.price}</h3>
+          </div>
         ))}
       </dl>
     </>
