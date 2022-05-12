@@ -15,6 +15,7 @@ export const getProductsThunk = () => async (dispatch) => {
   const response = await fetch('/api/products/')
   if (response.ok) {
     const products = await response.json();
+    console.log("=====>>>>>>products in thunk<<<<<<======", products);
     dispatch(getProducts(products.products));
     return response;
   }
