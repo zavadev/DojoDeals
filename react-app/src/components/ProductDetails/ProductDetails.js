@@ -15,6 +15,7 @@ function ProductDetails() {
   const sessionUser = useSelector(state => state.session.user);
   const product = fetchedProd?.product
   const reviews = useSelector(state => Object.values(state.reviews));
+  const reviewSubmitted = reviews?.some(review => review.user_id === sessionUser.id)
 
   useEffect(() => {
     dispatch(getOneProductThunk(productId))
@@ -33,9 +34,11 @@ function ProductDetails() {
         <div className="reviews-header">
           REVIEWS FOR THIS PRODUCT:
         </div>
-        <div>
-          <AddReviewModal productId={productId}/>
-        </div>
+        { !reviewSubmitted &&
+          <div>
+            <AddReviewModal productId={productId}/>
+          </div>
+        }
         <div>
           <dl>
             {reviews?.map(review => (
