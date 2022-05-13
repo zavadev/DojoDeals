@@ -45,7 +45,7 @@ function EditReviewForm({ setShowModal, review }) {
         ))} */}
         <div id="edit-review-title">Edit Review</div>
         <select onChange={(e) => setRating(+e.target.value)}>
-          <option value="none">Rating (1-5)</option>
+          <option value={rating}>{rating}</option>
           <option value="1">
               1
           </option>

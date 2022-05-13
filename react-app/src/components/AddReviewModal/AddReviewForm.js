@@ -20,18 +20,20 @@ function AddReviewForm({ setShowModal, productId }) {
       content,
       rating
     }
-    dispatch(postReviewThunk(productId, newReview))
-    setShowModal(false)
+    // dispatch(postReviewThunk(productId, newReview))
+    // setShowModal(false)
     //TRYING TO DO ERROR HANDLING:
-    // await dispatch(postReviewThunk(productId, newReview))
-    // .then((res)=>{
-    //   if(!res?.ok){
-    //     setErrors(res?.errors)
-    //   }else{
-    //     setErrors([])
-    //     setShowModal(false)
-    //   }
-    // })
+    await dispatch(postReviewThunk(productId, newReview))
+    .then((res)=>{
+      if(!res?.ok){
+        console.log("========------->>>>>", res)
+        setErrors(res?.errors)
+      }else{
+        setErrors([])
+        setShowModal(false)
+      }
+    })
+    .then(() => setShowModal(false))
   }
 
   return (

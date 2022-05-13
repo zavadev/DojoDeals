@@ -42,6 +42,9 @@ export const postReviewThunk = (productId, review) => async (dispatch) => {
     const newReview = await response.json();
     dispatch(postReview(newReview))
     return newReview;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    return data;
   }
   return response;
 }
