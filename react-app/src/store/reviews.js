@@ -42,13 +42,16 @@ export const postReviewThunk = (productId, review) => async (dispatch) => {
     const newReview = await response.json();
     dispatch(postReview(newReview))
     return newReview;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    return data;
   }
   return response;
 }
 
 export const updateReviewThunk = (productId, userId, review) => async (dispatch) => {
   const response = await fetch(`/api/products/${productId}/reviews/${userId}/edit`, {
-    method: "PUT",
+    method: 'PUT',
     headers: { "Content-Type": "application/json"},
     body: JSON.stringify(review)
   })
@@ -56,6 +59,9 @@ export const updateReviewThunk = (productId, userId, review) => async (dispatch)
     const updatedReview = await response.json();
     dispatch(updateReview(updatedReview));
     return updatedReview;
+  } else if (response.status < 500){
+    const data = await response.json();
+    return data;
   }
   return response;
 }

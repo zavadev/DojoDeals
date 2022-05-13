@@ -63,6 +63,7 @@ def update_review(id, userId):
     updatedReview.rating=form.data["rating"]
     db.session.commit()
     return updatedReview.to_dict()
+
   return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 #DELETE a Review

@@ -8,7 +8,7 @@ function EditReviewForm({ setShowModal, review }) {
   const [rating, setRating] = useState(review.rating);
   const [title, setTitle] = useState(review.title);
   const [content, setContent] = useState(review.content);
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const user_id = useSelector(state => state.session.user.id);
 
 
@@ -21,31 +21,33 @@ function EditReviewForm({ setShowModal, review }) {
       content,
       rating
     }
-    dispatch(updateReviewThunk(review.product_id, user_id, newReview))
-    setShowModal(false)
+    //THIS WORKS BUT WITHOUT ERROR HANDLING
+    // dispatch(updateReviewThunk(review.product_id, user_id, newReview))
+    // setShowModal(false)
 
     // Error Handling Attempt:
     // dispatch(updateReviewThunk(newReview))
     //   .then((res) => {
-
-    //     if (!res?.ok) {
-    //       setErrors(res?.errors)
-    //     } else {
-    //       setErrors([])
-    //       setShowModal(false)
-    //     }
-    //   })
+    await dispatch(updateReviewThunk(review.product_id, user_id, newReview))
+    .then((res)=>{
+      if (res.errors) {
+        setErrors(res?.errors)
+      } else {
+        setErrors([])
+        setShowModal(false)
+      }
+    })
   }
 
   return (
     <>
       <form id="edit-review-form" onSubmit={editSubmit}>
-        {/* {errors?.length > 0 && errors?.map((error, ind) => (
+        {errors?.length > 0 && errors?.map((error, ind) => (
           <div key={ind}>{error}</div>
-        ))} */}
+        ))}
         <div id="edit-review-title">Edit Review</div>
         <select onChange={(e) => setRating(+e.target.value)}>
-          <option value="none">Rating (1-5)</option>
+          <option value={rating}>{rating}</option>
           <option value="1">
               1
           </option>
