@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import { getOneProductThunk } from '../../store/products';
 import { getReviewsThunk } from '../../store/reviews';
 import AddReviewModal from '../AddReviewModal';
-import DeleteReviewModal from '../DeleteReviewModal'
+import DeleteReviewModal from '../DeleteReviewModal';
+import EditReviewModal from '../EditReviewModal';
 import './ProductDetails.css';
 
 function ProductDetails() {
@@ -44,6 +45,7 @@ function ProductDetails() {
                 <div>{review?.rating}/5 Stars</div>
                 {sessionUser && sessionUser.id == review?.user_id &&
                   <>
+                    <EditReviewModal review={review} />
                     <DeleteReviewModal user_id={review?.user_id} product_id={review?.product_id}/>
                   </>
                 }
