@@ -8,8 +8,6 @@ function MainPage() {
   const dispatch = useDispatch();
   const products = useSelector(state => Object.values(state.products))
 
-  console.log("=====>>>>>>PRODUCTS<<<<<<======", products);
-
   useEffect(() => {
     dispatch(getProductsThunk())
   }, [dispatch])
@@ -19,8 +17,8 @@ function MainPage() {
       <h1>MAIN PRODUCTS PAGE</h1>
       <dl className="image-list-main">
         {products?.map(product => (
-          <div className="main-image-div">
-            <NavLink key={product?.id} to={`/products/${product.id}`}>
+          <div key={product?.id} className="main-image-div">
+            <NavLink to={`/products/${product.id}`}>
               <dt>
                 <img src={product?.image} alt={product?.title} className="main-product-image"/>
               </dt>

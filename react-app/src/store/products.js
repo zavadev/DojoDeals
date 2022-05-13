@@ -24,7 +24,6 @@ export const getOneProductThunk = (productId) => async (dispatch) => {
   const response = await fetch(`/api/products/${productId}`)
   if (response.ok) {
     const product = await response.json();
-    console.log("response product======", product)
     dispatch(getOneProduct(product))
     return product;
   }
@@ -43,7 +42,7 @@ const productsReducer = (state = initialState, action) => {
       return newState;
     case GET_ONE_PRODUCT:
       newState = {};
-      newState[action.product.id] = action.product;
+      newState[action.product.product.id] = action.product;
       return newState;
     default:
       return state;

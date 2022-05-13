@@ -2,20 +2,22 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProductThunk } from '../../store/products';
+import { getReviewsThunk } from '../../store/reviews';
+import AddReviewModal from '../AddReviewModal';
+import DeleteReviewModal from '../DeleteReviewModal'
 import './ProductDetails.css';
 
 function ProductDetails() {
   const dispatch = useDispatch();
   const { productId } = useParams();
   const fetchedProd = useSelector(state => Object.values(state.products)[0]);
+  const sessionUser = useSelector(state => state.session.user);
   const product = fetchedProd?.product
-  const reviews = fetchedProd?.reviews
-
-  console.log("=====>>>>>>PRODUCT<<<<<<======", product);
-  console.log("00000>>>>>>REVIEWS<<<<<<00000", reviews);
+  const reviews = useSelector(state => Object.values(state.reviews));
 
   useEffect(() => {
     dispatch(getOneProductThunk(productId))
+    dispatch(getReviewsThunk(productId))
   }, [dispatch, productId])
 
   return (
@@ -31,7 +33,7 @@ function ProductDetails() {
           REVIEWS FOR THIS PRODUCT:
         </div>
         <div>
-          <button>Add Review</button>
+          <AddReviewModal productId={productId}/>
         </div>
         <div>
           <dl>
@@ -40,6 +42,11 @@ function ProductDetails() {
                 <div>{review?.title}</div>
                 <div>{review?.content}</div>
                 <div>{review?.rating}/5 Stars</div>
+                {sessionUser && sessionUser.id == review?.user_id &&
+                  <>
+                    <DeleteReviewModal user_id={review?.user_id} product_id={review?.product_id}/>
+                  </>
+                }
               </dt>
             ))}
           </dl>

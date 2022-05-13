@@ -20,14 +20,12 @@ def single_product(id):
   reviews = Review.query.filter(Review.product_id == id).all()
   product = {'product': product.to_dict(), 'reviews': [review.to_dict() for review in reviews]}
   return product
-  # return product.to_dict()
 
-#GET Reviews
-# @product_routes.route('/<int:id>/reviews')
-# def get_reviews(id):
-#   reviews = Review.query.filter(Review.product_id == id).all()
-#   reviewsDict = {'reviews': reviews}
-#   return reviewsDict
+# #GET Reviews
+@product_routes.route('/<int:id>/reviews')
+def get_reviews(id):
+  reviews = Review.query.filter(Review.product_id == id).all()
+  return { 'reviews': [review.to_dict() for review in reviews] }
 
 
 #POST New Review
@@ -68,7 +66,7 @@ def update_review(id, userId):
   return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 #DELETE a Review
-@product_routes.route('/<int:id>/reviews/<int:userId>', methods=['DELETE'])
+@product_routes.route('/<int:productId>/reviews/<int:userId>', methods=['DELETE'])
 @login_required
 def delete_review(productId, userId):
   deletedReview = Review.query.filter(Review.product_id == productId, Review.user_id == userId).first()

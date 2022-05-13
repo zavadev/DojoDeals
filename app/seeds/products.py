@@ -2,9 +2,9 @@ from app.models import db, Product
 
 def seed_products():
   product1 = Product(
-    title="MMA Gloves (leather)",
+    title="MMA Gloves (Leather)",
     description="An amazing pair of gloves.",
-    price=19.99,
+    price=99.99,
     image="https://res.cloudinary.com/doulyb7dt/image/upload/v1652340344/DojoDeals/gloves_vbtz6c.png",
     category="gloves"
     )
@@ -18,7 +18,7 @@ def seed_products():
   product3 = Product(
     title="Muay Thai Pads",
     description="Premium Muay Thai/Kickboxing pads, suitable for multiple disciplines",
-    price=199.99,
+    price=149.99,
     image="https://res.cloudinary.com/doulyb7dt/image/upload/v1652400095/DojoDeals/thai_pads_hjt8wy.png",
     category="pads"
     )

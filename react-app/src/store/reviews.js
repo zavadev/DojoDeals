@@ -3,31 +3,31 @@ const POST_REVIEW = 'reviews/POST_REVIEW';
 const UPDATE_REVIEW = 'reviews/UPDATE_REVIEW';
 const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 
-const getReviews = (review) => ({
-  type: 'GET_REVIEWS',
-  review
+const getReviews = (reviews) => ({
+  type: GET_REVIEWS,
+  reviews
 })
 
 const postReview = (review) => ({
-  type: 'POST_REVIEW',
+  type: POST_REVIEW,
   review
 })
 
 const updateReview = (review) => ({
-  type: 'UPDATE_REVIEW',
+  type: UPDATE_REVIEW,
   review
 })
 
 const deleteReview = (review) => ({
-  type: 'DELETE_REVIEW',
+  type: DELETE_REVIEW,
   review
 })
 
 export const getReviewsThunk = (productId) => async (dispatch) => {
-  const response = await fetch(`/api/products/${productId}/reviews`);
+  const response = await fetch(`/api/products/${productId}`);
   if (response.ok){
-    const product = await response.json();
-    dispatch(getReviews(product.reviews));
+    const reviews = await response.json();
+    dispatch(getReviews(reviews.reviews));
     return response;
   }
 }
@@ -79,15 +79,16 @@ const reviewsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case GET_REVIEWS:
-      newState = { ...state }
-      action.review.forEach(ele => newState[ele.id] = ele);
+      newState = {}
+      action.reviews.forEach(ele => newState[ele.id] = ele);
       return newState;
     case POST_REVIEW:
       newState = {};
       newState = { ...state, [action.review.id]: action.review };
       return newState;
     case UPDATE_REVIEW:
-      newState = {...state, [action.review.id]: action.review}
+      newState = {};
+      newState = { ...state, [action.review.id]: action.review };
       return newState;
     case DELETE_REVIEW:
       newState = { ...state };
