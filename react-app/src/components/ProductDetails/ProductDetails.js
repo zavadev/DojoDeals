@@ -31,6 +31,9 @@ function ProductDetails() {
           REVIEWS FOR THIS PRODUCT:
         </div>
         <div>
+          <button>Add Review</button>
+        </div>
+        <div>
           <dl>
             {reviews?.map(review => (
               <dt key={review?.id} className="review-list-item-container">
