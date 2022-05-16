@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProductThunk } from '../../store/products';
 import { getReviewsThunk } from '../../store/reviews';
+import { addEntryToCartThunk } from '../../store/cart';
 import AddReviewModal from '../AddReviewModal';
 import DeleteReviewModal from '../DeleteReviewModal';
 import EditReviewModal from '../EditReviewModal';
@@ -15,17 +16,27 @@ function ProductDetails() {
   const sessionUser = useSelector(state => state.session.user);
   const product = fetchedProd?.product
   const reviews = useSelector(state => Object.values(state.reviews));
+  const reviewSubmitted = reviews?.some(review => review.user_id === sessionUser.id)
 
   useEffect(() => {
     dispatch(getOneProductThunk(productId))
     dispatch(getReviewsThunk(productId))
   }, [dispatch, productId])
 
+  const handleAddToCart = async (userId, productId) => {
+    await dispatch(addEntryToCartThunk(userId, productId))
+  }
+
   return (
     <>
       <h1>PRODUCT DETAILS PAGE</h1>
-      <div>
-        <h3>{product?.title} - ${product?.price}</h3>
+      <div id="product-main-info">
+        <div id="product-main-title">{product?.title} - ${product?.price}</div>
+        <div id="add-cart-div">
+          <button className="add-to-cart-btn" onClick={() => handleAddToCart(sessionUser?.id, productId)}>
+            ADD TO CART
+          </button>
+        </div>
         <img src={product?.image} alt={product?.title} className="details-main-photo"/>
         <p>{product?.description}</p>
       </div>
@@ -33,9 +44,11 @@ function ProductDetails() {
         <div className="reviews-header">
           REVIEWS FOR THIS PRODUCT:
         </div>
-        <div>
-          <AddReviewModal productId={productId}/>
-        </div>
+        { !reviewSubmitted &&
+          <div>
+            <AddReviewModal productId={productId}/>
+          </div>
+        }
         <div>
           <dl>
             {reviews?.map(review => (
@@ -43,7 +56,7 @@ function ProductDetails() {
                 <div>{review?.title}</div>
                 <div>{review?.content}</div>
                 <div>{review?.rating}/5 Stars</div>
-                {sessionUser && sessionUser.id == review?.user_id &&
+                {sessionUser && sessionUser.id === review?.user_id &&
                   <>
                     <EditReviewModal review={review} />
                     <DeleteReviewModal user_id={review?.user_id} product_id={review?.product_id}/>

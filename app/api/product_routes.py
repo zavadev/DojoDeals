@@ -1,4 +1,3 @@
-from math import prod
 from flask import Blueprint, request
 from app.models import db, Product, Review
 from app.forms.new_review_form import NewReviewForm
