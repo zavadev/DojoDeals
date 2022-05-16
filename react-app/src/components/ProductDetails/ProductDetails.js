@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProductThunk } from '../../store/products';
@@ -17,14 +17,22 @@ function ProductDetails() {
   const product = fetchedProd?.product
   const reviews = useSelector(state => Object.values(state.reviews));
   const reviewSubmitted = reviews?.some(review => review.user_id === sessionUser.id)
+  const [error, setError] = useState("");
 
   useEffect(() => {
     dispatch(getOneProductThunk(productId))
     dispatch(getReviewsThunk(productId))
   }, [dispatch, productId])
 
-  const handleAddToCart = async (userId, productId) => {
-    await dispatch(addEntryToCartThunk(userId, productId))
+  const handleAddToCart = (userId, productId) => {
+    dispatch(addEntryToCartThunk(userId, productId))
+      .then((res) => {
+        if (res.Error) {
+          setError(res.Error)
+        } else {
+          setError("")
+        }
+      })
   }
 
   return (
@@ -36,6 +44,9 @@ function ProductDetails() {
           <button className="add-to-cart-btn" onClick={() => handleAddToCart(sessionUser?.id, productId)}>
             ADD TO CART
           </button>
+          <div id="error-div">
+            {error}
+          </div>
         </div>
         <img src={product?.image} alt={product?.title} className="details-main-photo"/>
         <p>{product?.description}</p>
@@ -44,10 +55,11 @@ function ProductDetails() {
         <div className="reviews-header">
           REVIEWS FOR THIS PRODUCT:
         </div>
-        { !reviewSubmitted &&
+        { reviewSubmitted ? null : (
           <div>
             <AddReviewModal productId={productId}/>
           </div>
+        )
         }
         <div>
           <dl>

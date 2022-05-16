@@ -47,8 +47,10 @@ export const addEntryToCartThunk = (userId, productId) => async (dispatch) => {
     const newEntry = await response.json();
     dispatch(postCartEntry(newEntry));
     return newEntry;
+  } else {
+    const data = await response.json();
+    return data;
   }
-  return response;
 }
 
 export const editCartEntryThunk = (userId, productId, quantity) => async (dispatch) => {

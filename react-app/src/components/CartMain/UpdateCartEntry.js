@@ -12,7 +12,6 @@ function UpdateCartEntry({ total, user_id, product_id }) {
     const quantity = +totalQuant;
     dispatch(editCartEntryThunk(user_id, product_id, quantity))
       .then((res) => {
-        console.log('THIS IS THE ERROR RESPONSE----->>', res)
         if (res.Error) {
           setError(res.Error)
           setTotalQuant(total)
@@ -20,12 +19,11 @@ function UpdateCartEntry({ total, user_id, product_id }) {
           setError("")
         }
       })
-      // .then(() => setError({}))
   }
 
   return (
     <div id="edit-div">
-      <input type="number" value={totalQuant} onChange={(e) => setTotalQuant(e.target.value)} onBlur={editSubmit}/>
+      <input type="number" value={totalQuant} onChange={(e) => setTotalQuant(e.target.value)} onBlur={editSubmit} min="1" max="5"/>
       <div>{error}</div>
     </div>
   )
