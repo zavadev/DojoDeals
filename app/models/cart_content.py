@@ -17,4 +17,5 @@ class Cart_content(db.Model):
           'user_id': self.user_id,
           'product_id': self.product_id,
           'quantity': self.quantity,
+          'product_details': self.products.to_dict()
       }

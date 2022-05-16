@@ -28,16 +28,18 @@ def add_product_to_cart(user_id, product_id):
     db.session.commit()
     return {'Cart_content': new_cart_entry.to_dict()}
 
-#UPDATE Entry in Cart (Quantity)
+#UPDATE Entry in Cart (Edits Quantity)
 @cart_routes.route('/<int:user_id>/<int:product_id>', methods=['PATCH'])
 def edit_cart_entry(user_id, product_id):
-    carted_product = Cart_content.query.filter(Cart_content.user_id == user_id, Cart_content.product_id == product_id).first()
-    update = request.get_json()
-    print("=======>>>>>>>>>>>",update)
-    newQuantity = update['body']['quantity']
-    carted_product.quantity = newQuantity
-    db.session.commit()
-    return carted_product.to_dict()
+  carted_product = Cart_content.query.filter(Cart_content.user_id == user_id, Cart_content.product_id == product_id).first()
+  update = request.get_json()
+  newQuantity = update['quantity']
+  if isinstance(newQuantity, int):
+    if (newQuantity <= 5):
+      carted_product.quantity = newQuantity
+      db.session.commit()
+      return carted_product.to_dict()
+  return {"Error": "Please enter a valid number (Quantity limit: 5 per product)"}, 400
 
 #DELETE One Entry in Cart (All Quantities)
 @cart_routes.route('/<int:user_id>/<int:product_id>', methods=['DELETE'])
@@ -45,7 +47,7 @@ def delete_cart_entry(user_id, product_id):
     carted_product = Cart_content.query.filter(Cart_content.user_id == user_id, Cart_content.product_id == product_id).first()
     db.session.delete(carted_product)
     db.session.commit()
-    return carted_product.to_dict()
+    return {"SUCESS": "ENTRY DELETED"}
 
 #DELETE All Entries/All Quantities in Cart ("CLEAR CART")
 @cart_routes.route('/<int:user_id>', methods=['DELETE'])

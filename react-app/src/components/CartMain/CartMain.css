@@ -1,0 +1,36 @@
+#entries-container{
+  display: flex;
+  justify-content: center;
+}
+
+#entries-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.single-list-entry {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.single-list-image-title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.single-list-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cart-list-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}

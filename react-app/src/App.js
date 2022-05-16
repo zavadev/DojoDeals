@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import MainPage from './components/MainPage/MainPage';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import CartMain from './components/CartMain/CartMain';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,9 @@ function App() {
         </Route>
         <Route path='/products/:productId' exact={true} >
           <ProductDetails />
+        </Route>
+        <Route path='/cart' exact={true} >
+          <CartMain />
         </Route>
       </Switch>
     </BrowserRouter>
