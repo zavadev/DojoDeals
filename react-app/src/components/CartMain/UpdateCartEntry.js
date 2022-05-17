@@ -23,7 +23,14 @@ function UpdateCartEntry({ total, user_id, product_id }) {
 
   return (
     <div id="edit-div">
-      <input type="number" value={totalQuant} onChange={(e) => setTotalQuant(e.target.value)} onBlur={editSubmit} min="1" max="5"/>
+      <input
+      type="number"
+      value={totalQuant}
+      onChange={(e) => setTotalQuant(e.target.value)}
+      onBlur={editSubmit}
+      min="1"
+      max="5"
+      />
       <div>{error}</div>
     </div>
   )

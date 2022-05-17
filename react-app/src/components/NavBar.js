@@ -10,7 +10,7 @@ const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation();
   const dispatch = useDispatch();
-  const userId = useSelector(state => state.session.user.id);
+  const userId = sessionUser?.id;
   const cart_contents = useSelector(state => Object.values(state.cart_contents));
   const cartTotal = cart_contents?.reduce((sum, entry) => sum += entry?.quantity, 0)
 
@@ -24,11 +24,11 @@ const NavBar = () => {
         <li className="nav-list-item">
           <div className="nav-dojo-logo">DojoDeals (Logo)</div>
         </li>
-        <li className="nav-list-item">
+        {/* <li className="nav-list-item">
           <NavLink to='/main' exact={true} activeClassName='active' id="nav-home-link" className="nav-links">
             Home
           </NavLink>
-        </li>
+        </li> */}
         {!sessionUser &&
           <div className="login-signup-div">
             <li className="nav-list-item">
@@ -50,6 +50,11 @@ const NavBar = () => {
         }
         {sessionUser &&
           <>
+            <li className="nav-list-item">
+            <NavLink to='/main' exact={true} activeClassName='active' id="nav-home-link" className="nav-links">
+              Home
+            </NavLink>
+            </li>
             <li className="nav-list-item">
               <LogoutButton />
             </li>
