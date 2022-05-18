@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { getOneProductThunk } from '../../store/products';
 import { getReviewsThunk } from '../../store/reviews';
 import { addEntryToCartThunk } from '../../store/cart';
@@ -11,7 +11,6 @@ import './ProductDetails.css';
 
 function ProductDetails() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { productId } = useParams();
   const fetchedProd = useSelector(state => Object.values(state.products)[0]);
   const sessionUser = useSelector(state => state.session.user);
@@ -19,15 +18,25 @@ function ProductDetails() {
   const reviews = useSelector(state => Object.values(state.reviews));
   const reviewSubmitted = reviews?.some(review => review.user_id === sessionUser?.id)
   const [error, setError] = useState("");
+  const [showButton, setShowButton] = useState(reviewSubmitted)
 
-  if (!sessionUser) {
-    history.push('/login')
-  }
 
   useEffect(() => {
     dispatch(getOneProductThunk(productId))
     dispatch(getReviewsThunk(productId))
   }, [dispatch, productId])
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      setShowButton(reviewSubmitted)
+    }
+    return () => isMounted = false;
+  }, [reviewSubmitted])
+
+  if (!sessionUser) {
+    return <Redirect to="/login" />
+  }
 
   const handleAddToCart = (userId, productId) => {
     dispatch(addEntryToCartThunk(userId, productId))
@@ -60,7 +69,7 @@ function ProductDetails() {
         <div className="reviews-header">
           REVIEWS FOR THIS PRODUCT:
         </div>
-        { !reviewSubmitted &&
+        { !showButton &&
           <div>
             <AddReviewModal />
           </div>

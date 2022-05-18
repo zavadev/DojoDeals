@@ -12,7 +12,7 @@ function AddReviewForm({ setShowModal }) {
   const { productId } = useParams();
   const user_id = useSelector(state => state.session.user.id);
 
-  const reviewSubmit = async (e) => {
+  const reviewSubmit = (e) => {
     e.preventDefault();
 
     let newReview = {
@@ -23,13 +23,13 @@ function AddReviewForm({ setShowModal }) {
       rating
     }
 
-    await dispatch(postReviewThunk(productId, newReview))
+    dispatch(postReviewThunk(productId, newReview))
     .then((res)=>{
       if(res.errors){
         setErrors(res?.errors)
       }else{
         setErrors([])
-        setShowModal(false)
+        // setShowModal(false)
       }
     })
   }

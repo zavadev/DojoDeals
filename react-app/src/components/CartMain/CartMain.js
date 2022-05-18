@@ -1,25 +1,28 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { getCartThunk, deleteOneEntryThunk } from '../../store/cart';
 import UpdateCartEntry from './UpdateCartEntry';
 import './CartMain.css'
 
 function CartMain() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const user = useSelector(state => state.session.user);
   const userId = user?.id;
   const cart_contents = useSelector(state => Object.values(state.cart_contents));
   const subtotal = cart_contents.reduce((acc, entry) => acc + +(entry?.product_details.price * entry?.quantity), 0)
 
-  if (!userId) {
-    history.push('/')
-  }
 
   useEffect(() => {
-    dispatch(getCartThunk(userId));
-  }, [dispatch, userId])
+    if (user) {
+      dispatch(getCartThunk(user.id));
+    }
+    // return () => console.log("Hi")
+  }, [dispatch, user])
+
+  if (!userId) {
+    return <Redirect to="/login" />
+  }
 
   return (
     <>
