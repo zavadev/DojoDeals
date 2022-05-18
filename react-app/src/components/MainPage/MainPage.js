@@ -21,8 +21,8 @@ function MainPage() {
         </div>
         <div className="product-list-container">
           <dl className="image-list-main">
-            {products?.map(product => (
-              <dt key={product?.id}>
+            {products?.map((product, ind) => (
+              <dt key={ind}>
                 <div className="main-image-div">
                   <NavLink to={`/products/${product.id}`}>
                     <img src={product?.image} alt={product?.title} className="main-product-image"/>

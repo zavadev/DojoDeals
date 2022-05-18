@@ -36,3 +36,21 @@
   cursor: pointer;
   background-color: lightgreen;
 }
+
+#demo-button-div {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+#demo-btn {
+  font-family: 'Industry';
+  font-size: 12px;
+  padding: 3px;
+  width: 100%;
+  background-color: white;
+}
+#demo-btn:hover {
+  cursor: pointer;
+  background-color: purple;
+  color: white;
+}

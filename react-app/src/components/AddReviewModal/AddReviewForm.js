@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from 'react-router-dom';
 import { postReviewThunk } from "../../store/reviews.js"
 
-function AddReviewForm({ setShowModal, productId }) {
+function AddReviewForm({ setShowModal }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [rating, setRating] = useState(0);
   const [errors, setErrors] = useState([]);
+  const { productId } = useParams();
   const user_id = useSelector(state => state.session.user.id);
 
   const reviewSubmit = async (e) => {
@@ -15,7 +17,7 @@ function AddReviewForm({ setShowModal, productId }) {
 
     let newReview = {
       user_id,
-      "product_id": productId,
+      "product_id": +productId,
       title,
       content,
       rating

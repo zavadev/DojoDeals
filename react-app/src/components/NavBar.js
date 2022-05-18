@@ -15,8 +15,8 @@ const NavBar = () => {
   const cartTotal = cart_contents?.reduce((sum, entry) => sum += entry?.quantity, 0)
 
   useEffect(() => {
-    dispatch(getCartThunk(userId));
-  }, [dispatch, userId])
+      dispatch(getCartThunk(userId));
+  }, [dispatch, userId, sessionUser])
 
   return (
     <nav>

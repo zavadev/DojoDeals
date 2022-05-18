@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import AddReviewForm from './AddReviewForm';
 import './AddReviewForm.css';
 
-function AddReviewModal({ productId }) {
+function AddReviewModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function AddReviewModal({ productId }) {
       <button id="add-review-btn" onClick={() => setShowModal(true)}>Add Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <AddReviewForm setShowModal={setShowModal} productId={productId}/>
+          <AddReviewForm setShowModal={setShowModal} />
         </Modal>
       )}
     </>

@@ -60,11 +60,10 @@ function ProductDetails() {
         <div className="reviews-header">
           REVIEWS FOR THIS PRODUCT:
         </div>
-        { reviewSubmitted ? null : (
+        { !reviewSubmitted &&
           <div>
-            <AddReviewModal productId={productId}/>
+            <AddReviewModal />
           </div>
-        )
         }
         <div>
           <dl>

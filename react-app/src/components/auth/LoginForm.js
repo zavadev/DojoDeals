@@ -31,6 +31,10 @@ const LoginForm = () => {
     return <Redirect to='/main' />;
   }
 
+  const demoLogin = () => {
+    dispatch(login("demo@aa.io", "password1100"));
+  }
+
   return (
     <div className='form-container'>
       <form className="form-login" onSubmit={onLogin}>
@@ -60,6 +64,9 @@ const LoginForm = () => {
         />
         <div id='login-button-div'>
           <button type='submit' id="login-btn">Log In</button>
+        </div>
+        <div id='demo-button-div'>
+          <button onClick={demoLogin} id="demo-btn">Demo</button>
         </div>
       </form>
     </div>
