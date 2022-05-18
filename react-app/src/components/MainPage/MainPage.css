@@ -1,3 +1,25 @@
+.main-page-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.ad-left-container {
+  grid-area: 1 / 1 / 6 / 2;
+  margin-right: 15px;
+  border: 2px solid red;
+}
+.product-list-container {
+  grid-area: 1 / 2 / 6 / 7;
+  border: 2px solid green;
+}
+.ad-right-container {
+  grid-area: 1 / 7 / 6 / 8;
+  margin-left: 15px;
+  border: 2px solid blue;
+}
+
 .image-list-main {
   display: flex;
   justify-content: flex-start;
@@ -10,7 +32,7 @@
   width: 250px;
   height: 250px;
   object-fit: cover;
-  margin: 15px;
+  margin: none;
 }
 
 .main-image-div {
@@ -18,4 +40,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.title-price {
+  margin-bottom: 10px;
+}
+
+#main-heading {
+  text-align: center;
 }

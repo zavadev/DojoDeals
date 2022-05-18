@@ -23,31 +23,33 @@ function CartMain() {
 
   return (
     <>
-      <h1>Everything in the cart:</h1>
+      <h1 id="shopping-cart-main-title">Your Shopping Cart</h1>
       <div id="main-cart-container">
         <div id="entries-container">
           <dl id="entries-list">
             {cart_contents?.map(entry => (
               <dt key={entry?.id} className="single-list-entry">
-                <div className="single-list-image-title">
-                  {entry?.product_details.title}
+                <div className="single-list-image">
                   <img src={entry?.product_details.image} className="cart-list-image" alt={entry?.product_details.title}/>
                 </div>
                 <div className="single-list-info">
+                  <div>
+                    {entry?.product_details.title}
+                  </div>
                   <div className="entry-price-div">
                     Price: {entry?.product_details.price} ea.
                   </div>
-                  <div className="entry-quantity-div">
-                    Quantity:
-                    <UpdateCartEntry total={entry?.quantity} user_id={userId} product_id={entry?.product_details.id} />
-                  </div>
+                </div>
+                <div className="entry-quantity-div">
+                  Quantity:
+                  <UpdateCartEntry total={entry?.quantity} user_id={userId} product_id={entry?.product_details.id} />
                 </div>
                 <div className="delete-btn-div">
                   <button
                     type="button"
                     className="delete-button"
                     onClick={() => dispatch(deleteOneEntryThunk(userId, entry?.product_details.id, entry?.id))}>
-                      REMOVE
+                      Remove
                     </button>
                 </div>
               </dt>
@@ -55,7 +57,22 @@ function CartMain() {
           </dl>
         </div>
         <div id="checkout-div">
-          SUBTOTAL: ${subtotal.toFixed(2)}
+          <div id="checkout-inner-div">
+            <div className="checkout-title-div">
+                Your Cart Total
+            </div>
+            <div className="sale-div">
+              <div>Subtotal:</div>
+              <s>{(subtotal*1.3).toFixed(2)}</s>
+              <div id="sale-info-div">30% - Grand Opening Sale!</div>
+            </div>
+            <div className="subtotal-div">
+              GRAND TOTAL: ${(subtotal+5).toFixed(2)}
+            </div>
+            <div className="checkout-button-div">
+              <button id="checkout-button">CHECKOUT</button>
+            </div>
+          </div>
         </div>
       </div>
     </>

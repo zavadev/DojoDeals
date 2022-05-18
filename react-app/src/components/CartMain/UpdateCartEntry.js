@@ -27,11 +27,12 @@ function UpdateCartEntry({ total, user_id, product_id }) {
       type="number"
       value={totalQuant}
       onChange={(e) => setTotalQuant(e.target.value)}
-      onBlur={editSubmit}
+      // onBlur={editSubmit}
       min="1"
       max="5"
       />
-      <div>{error}</div>
+      <button type="button" id="update-button" onClick={editSubmit}>Update</button>
+      <div id="error-div">{error}</div>
     </div>
   )
 }

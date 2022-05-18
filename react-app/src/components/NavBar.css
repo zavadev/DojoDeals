@@ -1,11 +1,13 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
   justify-content: flex-start;
+  align-items: center;
   padding: 15px;
   list-style-type: none;
-  background-color: #470F57;
+  /* background-color: #470F57; */
+  background-color: rgb(59, 59, 59);
+  margin: 0;
 }
 
 .login-signup-div {
@@ -16,6 +18,10 @@
 .nav-list-item {
   margin-left: 10px;
   margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
 .nav-dojo-logo {
@@ -26,9 +32,27 @@
 .nav-links {
   color: white;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+#logout-nav {
+  margin-left: auto;
+  padding-top: 3px;
+}
+#logout-link:hover {
+  cursor: pointer;
+}
+#cart-total-div {
+  color: white;
+  margin-left: 5px;
 }
 
 #nav-home-link {
   color: white;
   text-decoration: none;
+}
+#logo-writing {
+  margin-left: 6px;
 }
