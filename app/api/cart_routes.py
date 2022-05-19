@@ -58,4 +58,4 @@ def clear_cart(user_id):
   for product in carted_products:
     db.session.delete(product)
     db.session.commit()
-  return carted_products
+  return {"SUCESS": "ENTRIES DELETED"}

@@ -150,3 +150,9 @@
 #checkout-button:hover {
   cursor: pointer;
 }
+#empty-cart-notice {
+  text-align: center;
+}
+#checked-out-div {
+  text-align: center;
+}

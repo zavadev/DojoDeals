@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import MainPage from './components/MainPage/MainPage';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import CartMain from './components/CartMain/CartMain';
+import Checkout from './components/CartMain/Checkout';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +55,9 @@ function App() {
         </Route>
         <Route path='/cart' exact={true} >
           <CartMain />
+        </Route>
+        <Route path='/checkout' exact={true} >
+          <Checkout />
         </Route>
       </Switch>
     </BrowserRouter>
