@@ -51,45 +51,49 @@ function ProductDetails() {
 
   return (
     <>
-      <h1>PRODUCT DETAILS PAGE</h1>
-      <div id="product-main-info">
-        <div id="product-main-title">{product?.title} - ${product?.price}</div>
-        <div id="add-cart-div">
-          <button className="add-to-cart-btn" onClick={() => handleAddToCart(sessionUser?.id, productId)}>
-            ADD TO CART
-          </button>
-          <div id="error-div">
-            {error}
-          </div>
+      <h1 id="product-details-main-title">PRODUCT DETAILS</h1>
+      <div id="product-details-container">
+        <div id="product-main-info">
+          <img src={product?.image} alt={product?.title} className="details-main-photo"/>
         </div>
-        <img src={product?.image} alt={product?.title} className="details-main-photo"/>
-        <p>{product?.description}</p>
-      </div>
-      <div className="details-reviews-container">
-        <div className="reviews-header">
-          REVIEWS FOR THIS PRODUCT:
-        </div>
-        { !showButton &&
-          <div>
-            <AddReviewModal />
+        <div className="details-reviews-container">
+          <div id="product-main-title">{product?.title} - ${product?.price}</div>
+          <p>{product?.description}</p>
+          <div id="add-cart-div">
+            <button className="add-to-cart-btn" onClick={() => handleAddToCart(sessionUser?.id, productId)}>
+              ADD TO CART
+            </button>
+            <div id="addcart-error-div">
+              {error}
+            </div>
           </div>
-        }
-        <div>
-          <dl>
-            {reviews?.map(review => (
-              <dt key={review?.id} className="review-list-item-container">
-                <div>{review?.title}</div>
-                <div>{review?.content}</div>
-                <div>{review?.rating}/5 Stars</div>
-                {sessionUser && sessionUser.id === review?.user_id &&
-                  <>
-                    <EditReviewModal review={review} />
-                    <DeleteReviewModal user_id={review?.user_id} product_id={review?.product_id}/>
-                  </>
-                }
-              </dt>
-            ))}
-          </dl>
+            <div id="reviews-primary-div">
+              <div className="reviews-header">
+                REVIEWS FOR THIS PRODUCT:
+              </div>
+              { !showButton &&
+                <div>
+                  <AddReviewModal />
+                </div>
+              }
+              <div>
+            </div>
+            <dl id="review-list-dl">
+              {reviews?.map(review => (
+                <dt key={review?.id} className="review-list-item-container">
+                  <div className="individual-review-title">{review?.title}</div>
+                  <div id='review-content-div'>{review?.content}</div>
+                  <div>Rating: {review?.rating}/5</div>
+                  {sessionUser && sessionUser.id === review?.user_id &&
+                    <>
+                      <EditReviewModal review={review} />
+                      <DeleteReviewModal user_id={review?.user_id} product_id={review?.product_id}/>
+                    </>
+                  }
+                </dt>
+              ))}
+            </dl>
+          </div>
         </div>
       </div>
     </>

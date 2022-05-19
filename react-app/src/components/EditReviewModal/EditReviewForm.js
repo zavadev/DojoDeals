@@ -14,6 +14,16 @@ function EditReviewForm({ setShowModal, review }) {
 
   const editSubmit = async (e) => {
     e.preventDefault();
+
+    if (content.length > 250) {
+      setErrors(["Content must be fewer than 250 characters."])
+      return;
+    }
+    if (title.length > 20) {
+      setErrors(["Title must be fewer than 20 characters."])
+      return;
+    }
+
     let newReview = {
       user_id,
       "product_id": review.product_id,
@@ -21,13 +31,7 @@ function EditReviewForm({ setShowModal, review }) {
       content,
       rating
     }
-    //THIS WORKS BUT WITHOUT ERROR HANDLING
-    // dispatch(updateReviewThunk(review.product_id, user_id, newReview))
-    // setShowModal(false)
 
-    // Error Handling Attempt:
-    // dispatch(updateReviewThunk(newReview))
-    //   .then((res) => {
     await dispatch(updateReviewThunk(review.product_id, user_id, newReview))
     .then((res)=>{
       if (res.errors) {
@@ -46,7 +50,8 @@ function EditReviewForm({ setShowModal, review }) {
           <div key={ind}>{error}</div>
         ))}
         <div id="edit-review-title">Edit Review</div>
-        <select onChange={(e) => setRating(+e.target.value)}>
+        <div>Rating:</div>
+        <select className="edit-review-form-inputs" onChange={(e) => setRating(+e.target.value)}>
           <option value={rating}>{rating}</option>
           <option value="1">
               1
@@ -68,6 +73,7 @@ function EditReviewForm({ setShowModal, review }) {
           Title:
         </label>
         <input
+          className="edit-review-form-inputs"
           id="title-input"
           type="text"
           value={title}
@@ -77,13 +83,14 @@ function EditReviewForm({ setShowModal, review }) {
           Content:
         </label>
         <textarea
+          className="edit-review-form-inputs"
           id="content-input"
           type="text"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
-        <div id="submit-btn-div">
-          <button id="submit-button" type="submit">Submit Edit</button>
+        <div id='edit-review-btn-sub-div'>
+          <button id="edit-review-submit-button" type="submit">Submit Edit</button>
         </div>
       </form>
     </>

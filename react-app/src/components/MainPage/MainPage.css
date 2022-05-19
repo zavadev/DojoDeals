@@ -1,36 +1,57 @@
 .main-page-container {
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  margin-top: 5%;
 }
 .ad-left-container {
   grid-area: 1 / 1 / 6 / 2;
-  margin-right: 15px;
-  border: 2px solid red;
+  margin-top: 8%;
+  margin-left: 5px;
+}
+#left-ad {
+  width: 165px;
+  height: 700px;
+}
+#right-ad {
+  width: 165px;
+  height: 700px;
+  margin: 0;
+  padding: 0;
 }
 .product-list-container {
   grid-area: 1 / 2 / 6 / 7;
-  border: 2px solid green;
+  /* border: 2px solid green; */
 }
 .ad-right-container {
   grid-area: 1 / 7 / 6 / 8;
-  margin-left: 15px;
-  border: 2px solid blue;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 8%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .image-list-main {
   display: flex;
-  justify-content: flex-start;
+  justify-content: stretch;
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
+}
+.image-list-item {
+  width: auto;
+  height: auto;
 }
 
 .main-product-image {
-  width: 250px;
-  height: 250px;
+  width: 175px;
+  height: 175px;
   object-fit: cover;
   margin: none;
 }
@@ -40,12 +61,26 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 250px;
+  width: 250px;
+  border: 1px solid gray;
+}
+.main-image-div:hover {
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.367);
 }
 
-.title-price {
-  margin-bottom: 10px;
+.title-product {
+  margin-bottom: 3px;
+}
+.image-list-price {
+  font-size: 12px;
 }
 
 #main-heading {
   text-align: center;
+}
+
+#product-list-title {
+  font-family: 'Industry';
+  font-size: 22px;
 }

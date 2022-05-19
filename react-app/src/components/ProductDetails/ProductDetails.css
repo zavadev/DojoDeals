@@ -1,14 +1,72 @@
+#product-details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+#product-details-main-title {
+  text-align: center;
+}
+
 .details-main-photo{
   width: 400px;
   height: 400px;
 }
 
+.details-reviews-container{
+  width: 800px;
+}
+
 .review-list-item-container{
   margin: 15px;
-  border: 2px solid blue;
+  padding: 10px;
+  border: 2px solid rgb(59, 59, 61);
+}
+
+#review-list-dl {
+  width: 800px;
+  overflow: scroll;
+  margin-top: 0;
+}
+
+#product-main-title {
+  font-family: 'IndustryBold';
 }
 
 #product-main-info {
   display: flex;
   flex-direction: column;
+  margin-right: 5%;
+}
+#reviews-primary-div {
+  margin-top: 4%;
+}
+.individual-review-title {
+  font-family: 'IndustryBold';
+}
+
+#addcart-error-div {
+  margin-top: 3px;
+  font-size: 14px;
+  color: darkred;
+}
+.add-to-cart-btn {
+  font-family: 'Industry';
+  background-color: white;
+  font-size: 16px;
+  padding: 4px;
+  border: 1px solid black;
+}
+.add-to-cart-btn:hover {
+  cursor: pointer;
+  background-color: rgb(74, 209, 139);
+}
+
+#review-content-div {
+  width: 80%;
+  height: 100px;
+  /* overflow-x: scroll; */
+  overflow-wrap: anywhere;
 }

@@ -15,6 +15,15 @@ function AddReviewForm({ setShowModal }) {
   const reviewSubmit = (e) => {
     e.preventDefault();
 
+    if (content.length > 250) {
+      setErrors(["Content must be fewer than 250 characters."])
+      return;
+    }
+    if (title.length > 20) {
+      setErrors(["Title must be fewer than 20 characters."])
+      return;
+    }
+
     let newReview = {
       user_id,
       "product_id": +productId,
@@ -27,9 +36,8 @@ function AddReviewForm({ setShowModal }) {
     .then((res)=>{
       if(res.errors){
         setErrors(res?.errors)
-      }else{
+      } else {
         setErrors([])
-        // setShowModal(false)
       }
     })
   }

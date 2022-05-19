@@ -11,16 +11,16 @@ function DeleteReviewForm({ setShowModal, user_id, product_id }) {
     <>
       <form id="delete-review-form">
         <p id="delete-title">Are you sure you want to delete?</p>
-        <div id="delete-photo-btn-div">
+        <div id="delete-review-btn-div">
           <div id="submit-btn-div">
-            <button type="button" id="submit-button" onClick={() => {
+            <button type="button" id="review-delete-confirm-button" onClick={() => {
               dispatch(deleteReviewThunk(user_id, product_id));
               setShowModal(false)
             }
             }>Yes</button>
           </div>
-          <div id="no-photo-btn">
-            <button type="button" id="delete-button" onClick={() => setShowModal(false)}>No</button>
+          <div id="no-review-btn">
+            <button type="button" id="review-delete-cancel-button" onClick={() => setShowModal(false)}>No</button>
           </div>
         </div>
       </form>
