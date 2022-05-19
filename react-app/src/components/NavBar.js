@@ -28,6 +28,9 @@ const NavBar = () => {
           <img src='https://res.cloudinary.com/doulyb7dt/image/upload/v1652840507/DojoDeals/output-onlinepngtools_yng09l.png' alt='logo' width="50" height="50"/>
           <img id="logo-writing" src='https://res.cloudinary.com/doulyb7dt/image/upload/v1652841150/DojoDeals/text-1652840976101_vi7x4u.png' alt='logo' width="150" height="30"/>
         </li>
+        <li className="nav-list-item">
+          <a href="https://github.com/zavadev"><img src='https://res.cloudinary.com/doulyb7dt/image/upload/v1652985719/DojoDeals/github-11-32_xs9guh.png' alt="github-logo" /></a>
+        </li>
         {/* <li className="nav-list-item">
           <NavLink to='/main' exact={true} activeClassName='active' id="nav-home-link" className="nav-links">
             Home
