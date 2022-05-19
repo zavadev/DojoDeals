@@ -51,7 +51,8 @@ function AddReviewForm({ setShowModal }) {
           ))}
         </div>
         <div id="add-review-title">Add Review</div>
-        <select onChange={(e) => setRating(+e.target.value)}>
+        <div>Rating:</div>
+        <select className="add-review-form-inputs" onChange={(e) => setRating(+e.target.value)}>
           <option value="none">Rating (1-5)</option>
           <option value="1">
               1
@@ -77,6 +78,7 @@ function AddReviewForm({ setShowModal }) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className="add-review-form-inputs"
         />
         <label id="content-label">
           Content:
@@ -86,9 +88,10 @@ function AddReviewForm({ setShowModal }) {
           type="text"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          className="add-review-form-inputs"
         />
-        <div id="submit-btn-div">
-          <button id="submit-button" type="submit">Submit Review</button>
+        <div id="add-review-submit-btn-div">
+          <button id="add-review-submit-button" type="submit">Submit Review</button>
         </div>
       </form>
     </>
