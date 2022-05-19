@@ -1,0 +1,21 @@
+#signup-form-container {
+  display: flex;
+  justify-content: center;
+}
+#signup-form-main {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#signup-form-submit-btn {
+  align-self: center;
+  font-family: 'Industry';
+  background-color: white;
+  border: 1px solid black;
+  font-size: 16px;
+  padding: 5px;
+}
+#signup-form-submit-btn:hover {
+  cursor: pointer;
+  background-color: lightgreen;
+}
