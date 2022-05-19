@@ -12,6 +12,7 @@ import MainPage from './components/MainPage/MainPage';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import CartMain from './components/CartMain/CartMain';
 import Checkout from './components/CartMain/Checkout';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +59,9 @@ function App() {
         </Route>
         <Route path='/checkout' exact={true} >
           <Checkout />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </BrowserRouter>
