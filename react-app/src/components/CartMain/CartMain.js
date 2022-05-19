@@ -77,8 +77,12 @@ function CartMain() {
                 <div>Subtotal:</div>
                 <s>{(subtotal*1.3).toFixed(2)}</s>
                 <div id="sale-info-div">30% - Grand Opening Sale!</div>
+                <div id="after-sale-price">${(subtotal).toFixed(2)}</div>
               </div>
-              <div className="subtotal-div">
+              <div id="shipping-cost-div">
+                Shipping: $5.00
+              </div>
+              <div className="grand-total-div">
                 GRAND TOTAL: ${(subtotal+5).toFixed(2)}
               </div>
               <div className="checkout-button-div">
