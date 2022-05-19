@@ -14,6 +14,7 @@ import CartMain from './components/CartMain/CartMain';
 import Checkout from './components/CartMain/Checkout';
 import NotFound from './components/NotFound/NotFound';
 import SplashPage from './components/SplashPage/SplashPage';
+import AboutFooter from './components/AboutFooter/AboutFooter';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,6 +66,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
+      <AboutFooter />
     </BrowserRouter>
   );
 }

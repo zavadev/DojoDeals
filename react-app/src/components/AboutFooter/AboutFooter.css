@@ -1,0 +1,16 @@
+#about-footer-all {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(123, 95, 95, 0.686);
+  width: 100%;
+  height: 45px;
+  font-family: 'IndustryBold';
+}
+.about-link-divs {
+  margin-left: 13px;
+}
