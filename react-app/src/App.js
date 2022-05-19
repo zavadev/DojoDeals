@@ -13,6 +13,7 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import CartMain from './components/CartMain/CartMain';
 import Checkout from './components/CartMain/Checkout';
 import NotFound from './components/NotFound/NotFound';
+import SplashPage from './components/SplashPage/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,7 +47,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>Splash Page</h1>
+          <SplashPage />
         </Route>
         <Route path='/main' exact={true} >
           <MainPage />
