@@ -67,7 +67,7 @@ function CartMain() {
             ))}
           </dl>
         </div>
-        {cart_contents.length &&
+        {cart_contents.length > 0 &&
           <div id="checkout-div">
               <div id="checkout-inner-div">
               <div className="checkout-title-div">
