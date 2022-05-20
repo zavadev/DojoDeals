@@ -8,3 +8,21 @@
   width: 30%;
   height: 30%;
 }
+#splash-page-dojo {
+ width: 30%;
+ height: 30%;
+ /* margin-bottom: 3px; */
+}
+#splash-page-slogan-one {
+  font-family: 'IndustryBold';
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+#splash-page-slogan-two {
+  /* font-family: 'IndustryBold'; */
+  font-size: 24px;
+  margin-bottom: 45px;
+}
+#continue-path {
+  font-size: 16px;
+}
