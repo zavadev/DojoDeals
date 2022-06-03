@@ -64,11 +64,17 @@
   box-shadow: 0px 6px 8px -4px rgb(0, 0, 0) inset;
 }
 
-#categories-div {
+/* #categories-div {
   display: flex;
   justify-content: center;
-}
+} */
 #categories-list {
   display: flex;
-  justify-content: space-between;
+  align-self: center;
+  justify-content: space-around;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10px;
+  text-decoration: underline;
+  font-size: 1.1rem;
 }
