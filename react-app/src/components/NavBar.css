@@ -78,3 +78,7 @@
   text-decoration: underline;
   font-size: 1.1rem;
 }
+
+.category-item-main:hover {
+  cursor: pointer;
+}

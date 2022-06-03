@@ -81,11 +81,11 @@ const NavBar = () => {
           </div>
           <div id='categories-div'>
             <dl id='categories-list'>
-              <dt>All Products</dt>
-              <dt>Apparel</dt>
-              <dt>Training Gear</dt>
-              <dt>Equipment</dt>
-              <dt>Accessories</dt>
+              <dt className='category-item-main'>All Products</dt>
+              <dt className='category-item-main'>Apparel</dt>
+              <dt className='category-item-main'>Training Gear</dt>
+              <dt className='category-item-main'>Equipment</dt>
+              <dt className='category-item-main'>Accessories</dt>
             </dl>
           </div>
         </>
