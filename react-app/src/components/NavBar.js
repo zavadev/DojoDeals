@@ -74,19 +74,17 @@ const NavBar = () => {
           </>
         }
       </ul>
-      {(location.pathname === '/main') &&
+      {(location.pathname !== '/' || '/cart') &&
         <>
           <div id='sitewide-sale-banner'>
             GRAND OPENING SALE -- 30% Off Sitewide! (Limited Time)
           </div>
-          <div id='categories-div'>
-            <dl id='categories-list'>
-              <dt className='category-item-main'>All Products</dt>
-              <dt className='category-item-main'>Apparel</dt>
-              <dt className='category-item-main'>Training Gear</dt>
-              <dt className='category-item-main'>Equipment</dt>
-              <dt className='category-item-main'>Accessories</dt>
-            </dl>
+          <div id='categories-list'>
+            <span className='category-item-main'>All Products</span>
+            <span className='category-item-main'>Apparel</span>
+            <span className='category-item-main'>Training Gear</span>
+            <span className='category-item-main'>Equipment</span>
+            <span className='category-item-main'>Accessories</span>
           </div>
         </>
       }
