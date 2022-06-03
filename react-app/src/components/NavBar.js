@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { getCartThunk } from '../store/cart';
 import './NavBar.css';
@@ -8,11 +8,13 @@ import './NavBar.css';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
-  // const location = useLocation();
+  const location = useLocation();
   const dispatch = useDispatch();
   const userId = sessionUser?.id;
   const cart_contents = useSelector(state => Object.values(state.cart_contents));
   const cartTotal = cart_contents?.reduce((sum, entry) => sum += entry?.quantity, 0)
+
+  console.log("THIS IS LOCATION", location.pathname)
 
   useEffect(() => {
     if (sessionUser){
@@ -74,6 +76,20 @@ const NavBar = () => {
           </>
         }
       </ul>
+      {((location.pathname === '/main') || (location.pathname.includes('products'))) &&
+        <>
+          <div id='sitewide-sale-banner'>
+            GRAND OPENING SALE -- 30% Off Sitewide! (Limited Time)
+          </div>
+          <div id='categories-list'>
+            <span className='category-item-main'>All Products</span>
+            <span className='category-item-main'>Apparel</span>
+            <span className='category-item-main'>Training Gear</span>
+            <span className='category-item-main'>Equipment</span>
+            <span className='category-item-main'>Accessories</span>
+          </div>
+        </>
+      }
     </nav>
   );
 }

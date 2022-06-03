@@ -6,7 +6,7 @@
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 .ad-left-container {
   grid-area: 1 / 1 / 6 / 2;

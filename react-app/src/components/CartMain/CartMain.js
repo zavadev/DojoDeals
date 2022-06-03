@@ -74,7 +74,7 @@ function CartMain() {
                   Your Cart Total
               </div>
               <div className="sale-div">
-                <div>Subtotal:</div>
+                <div className="subtotal-div">Subtotal:</div>
                 <s>{(subtotal*1.3).toFixed(2)}</s>
                 <div id="sale-info-div">30% - Grand Opening Sale!</div>
                 <div id="after-sale-price">${(subtotal).toFixed(2)}</div>
