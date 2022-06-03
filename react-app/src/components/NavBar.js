@@ -14,6 +14,8 @@ const NavBar = () => {
   const cart_contents = useSelector(state => Object.values(state.cart_contents));
   const cartTotal = cart_contents?.reduce((sum, entry) => sum += entry?.quantity, 0)
 
+  console.log("THIS IS LOCATION", location.pathname)
+
   useEffect(() => {
     if (sessionUser){
       dispatch(getCartThunk(userId));
@@ -74,7 +76,7 @@ const NavBar = () => {
           </>
         }
       </ul>
-      {(location.pathname !== '/' || '/cart') &&
+      {((location.pathname === '/main') || (location.pathname.includes('products'))) &&
         <>
           <div id='sitewide-sale-banner'>
             GRAND OPENING SALE -- 30% Off Sitewide! (Limited Time)
