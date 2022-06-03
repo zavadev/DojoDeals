@@ -56,3 +56,19 @@
 #logo-writing {
   margin-left: 6px;
 }
+
+#sitewide-sale-banner {
+  text-align: center;
+  background-color: rgb(227, 197, 105);
+  padding: 6px;
+  box-shadow: 0px 6px 8px -4px rgb(0, 0, 0) inset;
+}
+
+#categories-div {
+  display: flex;
+  justify-content: center;
+}
+#categories-list {
+  display: flex;
+  justify-content: space-between;
+}

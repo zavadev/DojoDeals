@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { getCartThunk } from '../store/cart';
 import './NavBar.css';
@@ -8,7 +8,7 @@ import './NavBar.css';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
-  // const location = useLocation();
+  const location = useLocation();
   const dispatch = useDispatch();
   const userId = sessionUser?.id;
   const cart_contents = useSelector(state => Object.values(state.cart_contents));
@@ -74,6 +74,22 @@ const NavBar = () => {
           </>
         }
       </ul>
+      {(location.pathname === '/main') &&
+        <>
+          <div id='sitewide-sale-banner'>
+            GRAND OPENING SALE -- 30% Off Sitewide! (Limited Time)
+          </div>
+          <div id='categories-div'>
+            <dl id='categories-list'>
+              <dt>All Products</dt>
+              <dt>Apparel</dt>
+              <dt>Training Gear</dt>
+              <dt>Equipment</dt>
+              <dt>Accessories</dt>
+            </dl>
+          </div>
+        </>
+      }
     </nav>
   );
 }
