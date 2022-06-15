@@ -15,8 +15,8 @@ function MainPage() {
   return (
     <>
       <div className="main-page-container">
-        <div className="ad-left-container">
-          <img id="left-ad" src="https://res.cloudinary.com/doulyb7dt/image/upload/v1652932910/DojoDeals/Screen_Shot_2022-05-18_at_9.01.31_PM_liribe.png" alt="advertisement" />
+        <div className="side-left-container">
+          <img id="left-side" src="https://res.cloudinary.com/doulyb7dt/image/upload/v1652932910/DojoDeals/Screen_Shot_2022-05-18_at_9.01.31_PM_liribe.png" alt="announcement" />
         </div>
         <div className="product-list-container">
           <div id="product-list-title">All Products &#x2192;</div>
@@ -34,8 +34,8 @@ function MainPage() {
             ))}
           </dl>
         </div>
-        <div className="ad-right-container">
-          <img id="right-ad" src="https://res.cloudinary.com/doulyb7dt/image/upload/v1652932910/DojoDeals/Screen_Shot_2022-05-18_at_9.01.31_PM_liribe.png" alt="advertisement" />
+        <div className="side-right-container">
+          <img id="right-side" src="https://res.cloudinary.com/doulyb7dt/image/upload/v1652932910/DojoDeals/Screen_Shot_2022-05-18_at_9.01.31_PM_liribe.png" alt="announcement" />
         </div>
       </div>
     </>

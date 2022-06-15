@@ -8,16 +8,16 @@
   grid-row-gap: 0px;
   margin-top: 2%;
 }
-.ad-left-container {
+.side-left-container {
   grid-area: 1 / 1 / 6 / 2;
   margin-top: 8%;
   margin-left: 5px;
 }
-#left-ad {
+#left-side {
   width: 165px;
   height: 700px;
 }
-#right-ad {
+#right-side {
   width: 165px;
   height: 700px;
   margin: 0;
@@ -27,7 +27,7 @@
   grid-area: 1 / 2 / 6 / 7;
   /* border: 2px solid green; */
 }
-.ad-right-container {
+.side-right-container {
   grid-area: 1 / 7 / 6 / 8;
   margin-left: 10px;
   margin-right: 5px;
