@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: fixed;
   left: 0;
   bottom: 0;
   background-color: rgba(123, 95, 95, 0.686);
