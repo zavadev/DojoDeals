@@ -81,13 +81,13 @@ const NavBar = () => {
           <div id='sitewide-sale-banner'>
             GRAND OPENING SALE -- 30% Off Sitewide! (Limited Time)
           </div>
-          <div id='categories-list'>
+          {/* <div id='categories-list'>
             <span className='category-item-main'>All Products</span>
             <span className='category-item-main'>Apparel</span>
             <span className='category-item-main'>Training Gear</span>
             <span className='category-item-main'>Equipment</span>
             <span className='category-item-main'>Accessories</span>
-          </div>
+          </div> */}
         </>
       }
     </nav>
